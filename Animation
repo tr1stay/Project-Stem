@@ -1,0 +1,73 @@
+import simplegui
+import random
+width = 400
+height = 400
+# Create Global Variable
+x = -50
+t = -50
+o = -50
+def draw_handler(canvas):
+    x = x + 2
+    y = y + 2
+    t = t + 2
+    z = z + 2
+    canvas.draw_circle ((-150 + x,75), 50, 1, "yellow", "yellow")
+    if x == 600:
+        frame.set_canvas_background("black")
+    
+def draw_handler(blue):
+    global x
+    global t
+    global s
+    global o
+    s = -50
+    x = x + 1
+    t = t + 1
+    o = o + 1
+    #clouds
+    blue.draw_circle((-350 + o, 75), 25, 1, "white", "white")
+    blue.draw_circle((-300 + o, 75), 40, 1, "white", "white")
+    blue.draw_circle((-250 + o, 75), 25, 1, "white", "white")
+    
+    
+    
+    #house
+    blue.draw_line((200,150),(200,120),1,"white")
+    blue.draw_line((175+10,133),(225-10,133),1,"white")
+    blue.draw_polygon([(0,300), (400, 300), (400,400), (0, 400)], 1 , "black" , "green")
+    for i in range(300,450,5):
+            blue.draw_line((width/2 + 25, i), (width/2 - 25, i),1, "brown") 
+    blue.draw_line((width/2 - 25 ,400), (width/2 - 25 ,360), 1, "brown")
+    blue.draw_line((width/2 + 25 ,400), (width/2 + 25 ,360),1,"brown")
+    blue.draw_line((width/2 + 25 ,360), (width/2 - 25 ,360),1,"brown")
+    
+    
+    blue.draw_polygon([(150, 200), (250, 200), (250,350), (150,350)], 1 ,"black", "pink")
+    
+    blue.draw_polygon([(width/2+20, 350), (width/2-20, 350),(width/2-20, 300), (width/2+20, 300)], 1, "brown","brown")
+    
+    blue.draw_polygon([(125, 200), (275,200), (200,150)], 1, "black", "brown")
+    blue.draw_polygon([(175, 250),(175,275),(150+5,275),(150+5,250)], 1,"black" , "yellow")
+    if x > 1450:
+        x = 1000
+ 
+    blue.draw_circle ((-150 + x,75), 50, 1, "yellow", "yellow")
+    if x == 600:
+        frame.set_canvas_background("black")
+    blue.draw_polygon([(175, 250),(175,275),(150+5,275),(150+5,250)], 1,"black" , "yellow")
+    blue.draw_circle ((t - 650,75), 50, 1, "white", "white")
+    if t >= 950:
+        t = 950
+        blue.draw_polygon([(175, 250),(175,275),(150+5,275),(150+5,250)], 1,"black" , "black")
+        
+        for i in range(1):
+            rain = random.randint(0, 600)
+        rains = random.randint(0, 600)
+        blue.draw_circle((rain, rains), 5, 1, "blue", "blue")
+        
+    
+    
+frame = simplegui.create_frame('Testing', width, height)
+frame.set_canvas_background("lightblue")
+frame.set_draw_handler(draw_handler)
+frame.start()
